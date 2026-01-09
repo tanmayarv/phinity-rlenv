@@ -1,0 +1,59 @@
+Specification to RTL Task:
+
+Implement a complete asynchronous FIFO module based on the specification in /workdir/docs/Specification.md. The RTL code must be fully synthesizable and optimized for safe Clock Domain Crossing (CDC).
+
+Your implementation must include:
+
+1. **Dual-port memory array** for FIFO storage
+2. **Binary and Gray code pointers** for both read and write domains
+3. **Binary-to-Gray conversion logic** for pointer synchronization
+4. **Two-stage synchronizers** to safely cross Gray pointers between clock domains
+5. **Full and empty detection logic** based on Gray pointer comparison
+6. **Proper reset handling** for both clock domains (asynchronous, active-low)
+
+Key Requirements:
+
+- Module name must be: `async_fifo`
+- Parameters: `DATA_WIDTH` (default 8) and `DEPTH` (default 16, must be power of 2)
+- Pointer width: `$clog2(DEPTH) + 1` bits (extra bit for wraparound detection)
+- Gray code encoding is REQUIRED for all pointer synchronization
+- Write operations occur on `posedge wclk` when `wen && !wfull`
+- Read pointer updates on `posedge rclk` when `ren && !rempty`
+- **Read data output must be combinational** (use `assign rdata = mem[...]`) for zero-cycle latency
+- Memory addressing uses binary pointers; synchronization uses Gray pointers
+- Full/empty flags must be accurate even during simultaneous read/write operations
+
+Interface:
+```systemverilog
+module async_fifo #(
+    parameter DATA_WIDTH = 8,
+    parameter DEPTH = 16
+)(
+    input  wire                  wclk,
+    input  wire                  wrst_n,
+    input  wire                  wen,
+    input  wire [DATA_WIDTH-1:0] wdata,
+    output wire                  wfull,
+    
+    input  wire                  rclk,
+    input  wire                  rrst_n,
+    input  wire                  ren,
+    output wire [DATA_WIDTH-1:0] rdata,
+    output wire                  rempty
+);
+```
+
+Critical Design Considerations:
+
+1. **Metastability**: Gray code changes only 1 bit per increment, preventing multi-bit glitches during CDC
+2. **Synchronizers**: Use exactly 2 flip-flop stages to cross clock domains (standard MTBF reduction)
+3. **Full detection**: Check MSB and second-MSB differences in Gray pointers (wraparound logic)
+4. **Empty detection**: Direct Gray pointer comparison in read domain
+5. **Corner cases**: Handle simultaneous read/write, back-to-back operations, and independent resets
+
+Your implementation should create the file: `/workdir/sources/async_fifo.sv`
+
+The specification document provides detailed explanations of Gray code conversion, synchronizer implementation, and full/empty logic. Read it carefully before implementing.
+
+**Important**: This environment uses Icarus Verilog for testing. Avoid using SystemVerilog Assertion (SVA) property/sequence syntax if adding assertions. Use standard SystemVerilog constructs compatible with synthesis tools.
+

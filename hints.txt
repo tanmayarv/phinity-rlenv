@@ -1,0 +1,12 @@
+1. Gray Code Conversion: Remember that binary-to-gray conversion is: gray = binary ^ (binary >> 1)
+
+2. Pointer Width: For DEPTH=16, you need 5-bit pointers (4 bits for addressing + 1 extra bit for full/empty detection)
+
+3. Full Detection: FIFO is full when write pointer MSB differs from read pointer MSB, second MSB differs, but remaining bits match in Gray code
+
+4. Empty Detection: FIFO is empty when read Gray pointer exactly equals the synchronized write Gray pointer
+
+5. Synchronizers: Use a 2-stage synchronizer (two sequential flip-flops) to safely cross clock domains
+
+6. Read Output: Use combinational (assign) read, not registered - this is industry standard for zero-cycle latency
+

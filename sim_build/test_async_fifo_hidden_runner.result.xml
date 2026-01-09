@@ -1,0 +1,12 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1767949089" />
+    <testcase name="test_basic_write_read" classname="test_async_fifo_hidden" file="/Users/tanmayarvind/Desktop/TanMac/1. University/Programming/th_phinity_fifo/phinity-rlenv/tests/test_async_fifo_hidden.py" lineno="12" time="0.0014412403106689453" sim_time_ns="150.0" ratio_time="104077.02233250621" />
+    <testcase name="test_fill_and_drain" classname="test_async_fifo_hidden" file="/Users/tanmayarvind/Desktop/TanMac/1. University/Programming/th_phinity_fifo/phinity-rlenv/tests/test_async_fifo_hidden.py" lineno="64" time="0.005039215087890625" sim_time_ns="684.0" ratio_time="135735.42467827402" />
+    <testcase name="test_simultaneous_read_write" classname="test_async_fifo_hidden" file="/Users/tanmayarvind/Desktop/TanMac/1. University/Programming/th_phinity_fifo/phinity-rlenv/tests/test_async_fifo_hidden.py" lineno="120" time="0.0021800994873046875" sim_time_ns="280.0" ratio_time="128434.50568678915" />
+    <testcase name="test_wraparound" classname="test_async_fifo_hidden" file="/Users/tanmayarvind/Desktop/TanMac/1. University/Programming/th_phinity_fifo/phinity-rlenv/tests/test_async_fifo_hidden.py" lineno="170" time="0.008388042449951172" sim_time_ns="980.0000000000002" ratio_time="116832.98050139278" />
+    <testcase name="test_back_to_back_operations" classname="test_async_fifo_hidden" file="/Users/tanmayarvind/Desktop/TanMac/1. University/Programming/th_phinity_fifo/phinity-rlenv/tests/test_async_fifo_hidden.py" lineno="221" time="0.0022237300872802734" sim_time_ns="280.0" ratio_time="125914.56202423073" />
+    <testcase name="test_different_clock_ratios" classname="test_async_fifo_hidden" file="/Users/tanmayarvind/Desktop/TanMac/1. University/Programming/th_phinity_fifo/phinity-rlenv/tests/test_async_fifo_hidden.py" lineno="264" time="0.00498509407043457" sim_time_ns="620.0" ratio_time="124370.77239466259" />
+    <testcase name="test_reset_recovery" classname="test_async_fifo_hidden" file="/Users/tanmayarvind/Desktop/TanMac/1. University/Programming/th_phinity_fifo/phinity-rlenv/tests/test_async_fifo_hidden.py" lineno="307" time="0.0013289451599121094" sim_time_ns="180.0" ratio_time="135445.76964477933" />
+  </testsuite>
+</testsuites>

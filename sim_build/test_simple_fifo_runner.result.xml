@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1767949074" />
+    <testcase name="test_simple_write_read" classname="test_simple_fifo" file="/Users/tanmayarvind/Desktop/TanMac/1. University/Programming/th_phinity_fifo/phinity-rlenv/tests/test_simple_fifo.py" lineno="11" time="0.0028219223022460938" sim_time_ns="230.0" ratio_time="81504.72456911119" />
+  </testsuite>
+</testsuites>
